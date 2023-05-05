@@ -8,7 +8,7 @@
 ## About <a name = "about"></a>
 
 A simple docker application on top of a simple hotel search application, uses two microservices to perform basic search. 
-Uses Kubernetes on top of these microservices to create a cluster.
+Uses Kubernetes on top of these microservices to create a cluster. This also allows port forwarding and adds test program to search kubernetes service.
 
 ## Getting Started <a name = "getting_started"></a>
 
@@ -22,8 +22,8 @@ To run this project, you need to have:
 
 ### Installing
 
-1. Clone this repository: `git clone https://github.com/ps662/sit323_737-2023-t1-prac7p.git`
-2. Navigate to the project directory: `cd sit323_737-2023-t1-prac7p`
+1. Clone this repository: `git clone https://github.com/ps662/sit323_737-2023-t1-prac7c.git`
+2. Navigate to the project directory: `cd sit323_737-2023-t1-prac7c`
 
 ## Usage <a name = "usage"></a>
 
@@ -38,7 +38,14 @@ kubectl apply -f k8s/search_service.yaml
 
 This will start the server and listen on port 3000. You can access the application in your web browser by visiting [http://localhost:3000](http://localhost:3000).
 
-You can also test the application by (you need node installed for this):
+To enable port forwarding:
+
+```
+kubectl port-forward service/search-service 3000:3000
+kubectl port-forward service/nlp-service 3001:3001
+```
+
+After this, you can also test the application by (you need node installed for this):
 
 ```
 node .\simple_test_query.js
